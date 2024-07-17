@@ -1,0 +1,14 @@
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:state_checked="true">
+        <shape android:shape="rectangle">
+            <solid android:color="#00000000"/> <!-- Nền trong suốt khi đã chọn -->
+            <stroke android:width="2dp" android:color="#FFFFFF"/> <!-- Viền màu trắng khi đã chọn -->
+        </shape>
+    </item>
+    <item android:state_checked="false">
+        <shape android:shape="rectangle">
+            <solid android:color="#00000000"/> <!-- Nền trong suốt khi chưa chọn -->
+            <stroke android:width="2dp" android:color="@color/grey2"/> <!-- Viền màu trắng khi chưa chọn -->
+        </shape>
+    </item>
+</selector>
