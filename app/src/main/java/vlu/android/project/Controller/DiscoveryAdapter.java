@@ -16,8 +16,9 @@ import vlu.android.project.Model.Discovery;
 import vlu.android.project.R;
 
 public class DiscoveryAdapter extends ArrayAdapter<Discovery> {
-    Context context;
-    ArrayList<Discovery> discoveries;
+
+    private Context context;
+    private ArrayList<Discovery> discoveries;
 
     public DiscoveryAdapter(@NonNull Context context, ArrayList<Discovery> discoveries) {
         super(context, R.layout.custom_listview2, discoveries);
@@ -27,8 +28,11 @@ public class DiscoveryAdapter extends ArrayAdapter<Discovery> {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View view = inflater.inflate(R.layout.custom_listview2, parent, false);
+        View view = convertView;
+        if (view == null) {
+            LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            view = inflater.inflate(R.layout.custom_listview2, parent, false);
+        }
 
         ImageView imgDiscovery = view.findViewById(R.id.imgDiscovery);
         TextView nameDiscovery = view.findViewById(R.id.txtNameDiscovery);
@@ -36,10 +40,20 @@ public class DiscoveryAdapter extends ArrayAdapter<Discovery> {
 
         Discovery discovery = discoveries.get(position);
 
-        imgDiscovery.setImageResource(discovery.getImgDiscovery());
+        int imgResource = getImageResourceByName(String.valueOf(discovery.getImgDiscovery()));
+        if (imgResource != 0) {
+            imgDiscovery.setImageResource(imgResource);
+        } else {
+            imgDiscovery.setImageResource(R.drawable.discovery1); // fallback to default image
+        }
+
         nameDiscovery.setText(discovery.getNameDiscovery());
         dayDiscovery.setText(discovery.getDayDiscovery());
 
         return view;
+    }
+
+    int getImageResourceByName(String imageName) {
+        return context.getResources().getIdentifier(imageName, "drawable", context.getPackageName());
     }
 }

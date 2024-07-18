@@ -1,19 +1,12 @@
 package vlu.android.project.Model;
 
 public class Discovery {
-    int imgDiscovery;
-    String nameDiscovery, detailDiscovery, dayDiscovery;
+    private int imgDiscovery; // Keep as int
+    private String nameDiscovery;
+    private String dayDiscovery;
+    private String detailDiscovery;
 
-    public Discovery(int imgDiscovery, String nameDiscovery, String detailDiscovery, String dayDiscovery) {
-        this.imgDiscovery = imgDiscovery;
-        this.nameDiscovery = nameDiscovery;
-        this.detailDiscovery = detailDiscovery;
-        this.dayDiscovery = dayDiscovery;
-    }
-
-    public Discovery() {
-    }
-
+    // Getters and Setters
     public int getImgDiscovery() {
         return imgDiscovery;
     }
@@ -30,6 +23,14 @@ public class Discovery {
         this.nameDiscovery = nameDiscovery;
     }
 
+    public String getDayDiscovery() {
+        return dayDiscovery;
+    }
+
+    public void setDayDiscovery(String dayDiscovery) {
+        this.dayDiscovery = dayDiscovery;
+    }
+
     public String getDetailDiscovery() {
         return detailDiscovery;
     }
@@ -38,11 +39,13 @@ public class Discovery {
         this.detailDiscovery = detailDiscovery;
     }
 
-    public String getDayDiscovery() {
-        return dayDiscovery;
+    public Discovery(int imgDiscovery, String nameDiscovery, String dayDiscovery, String detailDiscovery) {
+        this.imgDiscovery = imgDiscovery;
+        this.nameDiscovery = nameDiscovery;
+        this.dayDiscovery = dayDiscovery;
+        this.detailDiscovery = detailDiscovery;
     }
 
-    public void setDayDiscovery(String dayDiscovery) {
-        this.dayDiscovery = dayDiscovery;
+    public Discovery() {
     }
 }

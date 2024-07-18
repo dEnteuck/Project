@@ -7,8 +7,6 @@
     android:paddingRight="28dp"
     android:background="@color/black2">
 
-    <!-- Other Views in the Parent Layout -->
-
     <LinearLayout
         android:id="@+id/match_info_layout"
         android:layout_width="match_parent"
