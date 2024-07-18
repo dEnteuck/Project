@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background_edt">
+
+    <ImageView
+        android:id="@+id/imageDiscovery"
+        android:layout_width="match_parent"
+        android:layout_height="375dp"
+        android:scaleType="centerInside"
+        android:layout_marginBottom="24dp"
+        android:src="@drawable/img_discovery" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/imageDiscovery"
+        android:orientation="vertical"
+        android:paddingLeft="28dp"
+        android:paddingRight="28dp">
+        <TextView
+            android:id="@+id/txtNameDiscovery"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Arsenal vs Aston Villa prediction"
+            android:textColor="@android:color/white"
+            android:textSize="24dp"
+            android:fontFamily="@font/source_sans_pro"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/txtDayDiscovery"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="May 15, 2020"
+            android:fontFamily="@font/source_sans_pro"
+            android:textSize="16dp"
+            android:layout_marginTop="34dp"
+            android:textColor="@color/grey1" />
+
+        <TextView
+            android:id="@+id/txtDetailDiscovery"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="29dp"
+            android:text="Arsenal will have to grind it out against Aston Villa if they are to register League wins. The match is scheduled for Sunday at the Emirates. \n\nThe Gunners put forth a real statement of intent after their 1-0 win against Manchester United. "
+            android:textSize="16dp"
+            android:fontFamily="@font/source_sans_pro"
+            android:textColor="@color/white" />
+
+    </LinearLayout>
+
+</RelativeLayout>

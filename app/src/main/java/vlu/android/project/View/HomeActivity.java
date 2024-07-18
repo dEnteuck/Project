@@ -16,6 +16,7 @@ import android.view.View;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+
 import vlu.android.project.R;
 
 public class HomeActivity extends AppCompatActivity {
@@ -60,7 +61,7 @@ public class HomeActivity extends AppCompatActivity {
                         selectedFragment = new HomeFragment();
                         break;
                     case R.id.itmDiscovery:
-                        //selectedFragment = new DiscoveryFragment();
+                        selectedFragment = new DiscoveryFragment();
                         break;
                     case R.id.itmChart:
                         //selectedFragment = new ChartFragment();
