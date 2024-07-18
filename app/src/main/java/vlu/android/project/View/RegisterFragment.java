@@ -1,4 +1,4 @@
-package vlu.android.project;
+package vlu.android.project.View;
 
 import static android.content.ContentValues.TAG;
 
@@ -7,8 +7,6 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 
 import android.text.TextUtils;
 import android.util.Log;
@@ -31,6 +29,8 @@ import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.HashMap;
 import java.util.Map;
+
+import vlu.android.project.R;
 
 public class RegisterFragment extends Fragment {
     View view;

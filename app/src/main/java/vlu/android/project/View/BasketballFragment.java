@@ -1,4 +1,4 @@
-package vlu.android.project;
+package vlu.android.project.View;
 
 import android.os.Bundle;
 
@@ -8,12 +8,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import vlu.android.project.R;
+
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link DetailStatisticsFragment#newInstance} factory method to
+ * Use the {@link BasketballFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class DetailStatisticsFragment extends Fragment {
+public class BasketballFragment extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -24,7 +26,7 @@ public class DetailStatisticsFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    public DetailStatisticsFragment() {
+    public BasketballFragment() {
         // Required empty public constructor
     }
 
@@ -34,11 +36,11 @@ public class DetailStatisticsFragment extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment DetailStatisticsFragment.
+     * @return A new instance of fragment BasketballFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static DetailStatisticsFragment newInstance(String param1, String param2) {
-        DetailStatisticsFragment fragment = new DetailStatisticsFragment();
+    public static BasketballFragment newInstance(String param1, String param2) {
+        BasketballFragment fragment = new BasketballFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -59,6 +61,6 @@ public class DetailStatisticsFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_detail_statistics, container, false);
+        return inflater.inflate(R.layout.fragment_basketball, container, false);
     }
 }

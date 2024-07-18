@@ -1,4 +1,4 @@
-package vlu.android.project;
+package vlu.android.project.View;
 
 import android.os.Bundle;
 import androidx.fragment.app.Fragment;
@@ -12,6 +12,9 @@ import android.widget.TextView;
 
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
+
+import vlu.android.project.Controller.DetailViewPagerAdapter;
+import vlu.android.project.R;
 
 public class MatchDetailFragment extends Fragment {
 

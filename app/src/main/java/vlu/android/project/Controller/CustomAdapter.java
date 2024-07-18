@@ -1,4 +1,4 @@
-package vlu.android.project;
+package vlu.android.project.Controller;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -9,6 +9,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+
+import vlu.android.project.Model.Match;
+import vlu.android.project.R;
 
 public class CustomAdapter extends ArrayAdapter<Match> {
     private final Context context;

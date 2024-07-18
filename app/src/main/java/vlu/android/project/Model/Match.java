@@ -1,4 +1,4 @@
-package vlu.android.project;
+package vlu.android.project.Model;
 
 public class Match {
     int teamLogo1, teamLogo2;

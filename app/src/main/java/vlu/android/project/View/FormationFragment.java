@@ -1,19 +1,21 @@
-package vlu.android.project;
+package vlu.android.project.View;
 
 import android.os.Bundle;
-
 import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+
+import vlu.android.project.R;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link BasketballFragment#newInstance} factory method to
+ * Use the {@link FormationFragment#newInstance} factory method to
  * create an instance of this fragment.
+ *
  */
-public class BasketballFragment extends Fragment {
+public class FormationFragment extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -24,26 +26,26 @@ public class BasketballFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    public BasketballFragment() {
-        // Required empty public constructor
-    }
-
     /**
      * Use this factory method to create a new instance of
      * this fragment using the provided parameters.
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment BasketballFragment.
+     * @return A new instance of fragment FormationFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static BasketballFragment newInstance(String param1, String param2) {
-        BasketballFragment fragment = new BasketballFragment();
+    public static FormationFragment newInstance(String param1, String param2) {
+        FormationFragment fragment = new FormationFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
         fragment.setArguments(args);
         return fragment;
+    }
+
+    public FormationFragment() {
+        // Required empty public constructor
     }
 
     @Override
@@ -58,7 +60,9 @@ public class BasketballFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_basketball, container, false);
+        View view = inflater.inflate(R.layout.fragment_formation, container, false);
+        ImageView imageView = view.findViewById(R.id.imgFormation);
+        imageView.setImageResource(R.drawable.img_1);
+        return view;
     }
 }

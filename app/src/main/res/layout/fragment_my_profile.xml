@@ -7,7 +7,7 @@
     android:padding="16dp"
     android:layout_alignParentBottom="true"
     android:background="@color/black2"
-    tools:context=".MyProfileFragment">
+    tools:context=".View.MyProfileFragment">
 
     <LinearLayout
         android:id="@+id/profileContainer"
