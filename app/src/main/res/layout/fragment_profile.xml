@@ -1,14 +1,116 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/black2"
     tools:context=".ProfileFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+    <LinearLayout
+        android:id="@+id/profileContainer"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:padding="16dp"
+        android:layout_marginTop="52dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
 
-</FrameLayout>
+        <ImageView
+            android:id="@+id/imgProfile"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginBottom="24dp"
+            android:scaleType="centerInside"
+            android:src="@drawable/ic_profile" />
+
+        <TextView
+            android:id="@+id/txtNameProfile"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Brian Imanuel"
+            android:fontFamily="@font/source_sans_pro"
+            android:textStyle="bold"
+            android:textColor="@color/white"
+            android:textSize="24dp" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:padding="8dp">
+
+            <Button
+                android:id="@+id/btnMyProfile"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:background="@drawable/background_btn"
+                android:backgroundTint="@color/black1"
+                android:gravity="center"
+                android:text="My profile"
+                android:textStyle="bold"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:fontFamily="@font/source_sans_pro"
+                android:paddingTop="14dp"
+                android:paddingBottom="14dp"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:textSize="14dp" />
+
+            <Button
+                android:id="@+id/btnSettings"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:background="@drawable/background_btn"
+                android:backgroundTint="@color/black1"
+                android:gravity="center"
+                android:text="Settings"
+                android:textStyle="bold"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:fontFamily="@font/source_sans_pro"
+                android:paddingTop="14dp"
+                android:paddingBottom="14dp"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:textSize="14dp" />
+
+            <Button
+                android:id="@+id/btnLogOut"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/background_btn"
+                android:backgroundTint="@color/black1"
+                android:gravity="center"
+                android:text="Log out"
+                android:textStyle="bold"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:fontFamily="@font/source_sans_pro"
+                android:paddingTop="14dp"
+                android:paddingBottom="14dp"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:textSize="14dp" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <FrameLayout
+        android:id="@+id/frmLayoutProfile"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toBottomOf="@id/profileContainer"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent">
+    </FrameLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
