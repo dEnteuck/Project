@@ -64,7 +64,7 @@ public class HomeActivity extends AppCompatActivity {
                         selectedFragment = new DiscoveryFragment();
                         break;
                     case R.id.itmChart:
-                        //selectedFragment = new ChartFragment();
+                        selectedFragment = new StandingsFragment();
                         break;
                     case R.id.itmProfile:
                         selectedFragment = new ProfileFragment();

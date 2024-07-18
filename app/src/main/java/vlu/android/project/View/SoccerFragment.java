@@ -61,7 +61,6 @@ public class SoccerFragment extends Fragment {
                             selectedMatch.getMatchStatus()
                     );
 
-                    // Pass the match index to the fragment
                     DetailStatisticsFragment detailStatisticsFragment = DetailStatisticsFragment.newInstance(position);
 
                     FragmentTransaction transaction = getFragmentManager().beginTransaction();
@@ -84,11 +83,9 @@ public class SoccerFragment extends Fragment {
             Gson gson = new Gson();
             InputStreamReader reader = new InputStreamReader(is);
 
-            // Parsing the JSON file
             JsonObject jsonObject = gson.fromJson(reader, JsonObject.class);
             JsonArray matchesArray = jsonObject.getAsJsonArray("matches");
 
-            // Type for deserialization
             Type matchListType = new TypeToken<List<Match>>() {}.getType();
             matchList = gson.fromJson(matchesArray, matchListType);
 
@@ -100,11 +97,7 @@ public class SoccerFragment extends Fragment {
         return matchList;
     }
 
-    // Helper method to get resource ID from resource name or URL
     private int getLogoResourceId(String resourceNameOrUrl) {
-        // Logic to convert resourceNameOrUrl to resource ID
-        // This can be implemented based on your project's resource naming or URL handling logic
-        // For simplicity, assuming it's directly a resource name
         return getResources().getIdentifier(resourceNameOrUrl, "drawable", getActivity().getPackageName());
     }
 }
