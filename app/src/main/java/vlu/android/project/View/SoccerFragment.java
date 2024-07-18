@@ -1,4 +1,4 @@
-package vlu.android.project;
+package vlu.android.project.View;
 
 import android.os.Bundle;
 import androidx.fragment.app.Fragment;
@@ -9,6 +9,10 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import java.util.ArrayList;
+
+import vlu.android.project.Controller.CustomAdapter;
+import vlu.android.project.Model.Match;
+import vlu.android.project.R;
 
 public class SoccerFragment extends Fragment {
     View view;

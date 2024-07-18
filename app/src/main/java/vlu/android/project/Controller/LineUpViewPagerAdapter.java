@@ -1,9 +1,13 @@
-package vlu.android.project;
+package vlu.android.project.Controller;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
+
+import vlu.android.project.View.DetailLineUpFragment;
+import vlu.android.project.View.FormationFragment;
+import vlu.android.project.View.SoccerFragment;
 
 public class LineUpViewPagerAdapter extends FragmentStateAdapter {
     public LineUpViewPagerAdapter(@NonNull FragmentActivity fragmentActivity) {

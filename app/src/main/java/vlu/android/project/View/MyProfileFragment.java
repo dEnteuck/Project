@@ -1,4 +1,4 @@
-package vlu.android.project;
+package vlu.android.project.View;
 
 import android.os.Bundle;
 
@@ -16,6 +16,8 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
+
+import vlu.android.project.R;
 
 /**
  * A simple {@link Fragment} subclass.

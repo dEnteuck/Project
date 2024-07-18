@@ -1,4 +1,4 @@
-package vlu.android.project;
+package vlu.android.project.View;
 
 import android.os.Bundle;
 
@@ -13,6 +13,9 @@ import android.widget.TextView;
 
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
+
+import vlu.android.project.R;
+import vlu.android.project.Controller.ViewPagerAdapter;
 
 public class HomeFragment extends Fragment {
 
