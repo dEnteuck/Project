@@ -1,0 +1,61 @@
+{
+  "matches": [
+    {
+      "teamLogo1": "logo_1",
+      "teamLogo2": "logo_2",
+      "teamName1": "Real Madrid",
+      "teamName2": "Barcelona",
+      "teamScore1": "1",
+      "teamScore2": "0",
+      "matchStatus": "HT",
+      "shooting1": "8",
+      "shooting2": "12",
+      "attacks1": "22",
+      "attacks2": "29",
+      "possession1": "42",
+      "possession2": "58",
+      "cards1": "3",
+      "cards2": "5",
+      "corners1": "8",
+      "corners2": "7"
+    },
+    {
+      "teamLogo1": "manchesterunited",
+      "teamLogo2": "chelsea",
+      "teamName1": "Manchester United",
+      "teamName2": "Chelsea",
+      "teamScore1": "2",
+      "teamScore2": "1",
+      "matchStatus": "FT",
+      "shooting1": "10",
+      "shooting2": "8",
+      "attacks1": "25",
+      "attacks2": "22",
+      "possession1": "52",
+      "possession2": "48",
+      "cards1": "2",
+      "cards2": "3",
+      "corners1": "6",
+      "corners2": "5"
+    },
+    {
+      "teamLogo1": "manchestercity",
+      "teamLogo2": "arsenal",
+      "teamName1": "Manchester City",
+      "teamName2": "Arsenal",
+      "teamScore1": "4",
+      "teamScore2": "4",
+      "matchStatus": "HT",
+      "shooting1": "12",
+      "shooting2": "10",
+      "attacks1": "28",
+      "attacks2": "24",
+      "possession1": "55",
+      "possession2": "45",
+      "cards1": "4",
+      "cards2": "2",
+      "corners1": "9",
+      "corners2": "6"
+    }
+  ]
+}

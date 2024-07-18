@@ -37,12 +37,17 @@ public class CustomAdapter extends ArrayAdapter<Match> {
         Match match = matches.get(position);
 
         // Set data to views
-        teamLogo1.setImageResource(match.getTeamLogo1());
-        teamLogo2.setImageResource(match.getTeamLogo2());
+        teamLogo1.setImageResource(getLogoResourceId(match.getTeamLogo1()));
+        teamLogo2.setImageResource(getLogoResourceId(match.getTeamLogo2()));
         teamName.setText(match.getTeamName1() + " vs " + match.getTeamName2());
         teamScore.setText(match.getTeamScore1() + " - " + match.getTeamScore2());
         matchStatus.setText(match.getMatchStatus());
 
         return rowView;
+    }
+
+    // Helper method to get resource ID from resource name
+    private int getLogoResourceId(String resourceName) {
+        return context.getResources().getIdentifier(resourceName, "drawable", context.getPackageName());
     }
 }

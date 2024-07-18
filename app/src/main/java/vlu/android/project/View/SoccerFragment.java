@@ -1,6 +1,8 @@
 package vlu.android.project.View;
 
+import vlu.android.project.R;
 import android.os.Bundle;
+import android.util.Log;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 import android.view.LayoutInflater;
@@ -8,11 +10,18 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
+import com.google.gson.reflect.TypeToken;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.lang.reflect.Type;
 import java.util.ArrayList;
-
-import vlu.android.project.Controller.CustomAdapter;
+import java.util.List;
 import vlu.android.project.Model.Match;
-import vlu.android.project.R;
+import vlu.android.project.Controller.CustomAdapter;
 
 public class SoccerFragment extends Fragment {
     View view;
@@ -31,35 +40,71 @@ public class SoccerFragment extends Fragment {
         view = inflater.inflate(R.layout.fragment_soccer, container, false);
         listView = view.findViewById(R.id.listView);
 
-        // Sample data
-        matchList = new ArrayList<>();
-        matchList.add(new Match(R.drawable.logo_2, R.drawable.logo_1, "Real Madrid", "Barcelona", "1", "0", "HT"));
-        matchList.add(new Match(R.drawable.logo_2, R.drawable.logo_1, "Manchester United", "Chelsea", "2", "1", "FT"));
+        // Load data from JSON file
+        matchList = loadMatchesFromAssets();
 
-        adapter = new CustomAdapter(getActivity(), matchList);
-        listView.setAdapter(adapter);
+        if (matchList != null) {
+            adapter = new CustomAdapter(getActivity(), matchList);
+            listView.setAdapter(adapter);
 
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Match selectedMatch = matchList.get(position);
-                MatchDetailFragment matchDetailFragment = MatchDetailFragment.newInstance(
-                        selectedMatch.getTeamLogo1(),
-                        selectedMatch.getTeamLogo2(),
-                        selectedMatch.getTeamName1(),
-                        selectedMatch.getTeamName2(),
-                        selectedMatch.getTeamScore1(),
-                        selectedMatch.getTeamScore2(),
-                        selectedMatch.getMatchStatus()
-                );
+            listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                    Match selectedMatch = matchList.get(position);
+                    MatchDetailFragment matchDetailFragment = MatchDetailFragment.newInstance(
+                            getLogoResourceId(selectedMatch.getTeamLogo1()),
+                            getLogoResourceId(selectedMatch.getTeamLogo2()),
+                            selectedMatch.getTeamName1(),
+                            selectedMatch.getTeamName2(),
+                            selectedMatch.getTeamScore1(),
+                            selectedMatch.getTeamScore2(),
+                            selectedMatch.getMatchStatus()
+                    );
 
-                FragmentTransaction transaction = getFragmentManager().beginTransaction();
-                transaction.replace(R.id.frmLayout, matchDetailFragment);
-                transaction.addToBackStack(null);
-                transaction.commit();
-            }
-        });
+                    // Pass the match index to the fragment
+                    DetailStatisticsFragment detailStatisticsFragment = DetailStatisticsFragment.newInstance(position);
+
+                    FragmentTransaction transaction = getFragmentManager().beginTransaction();
+                    transaction.replace(R.id.frmLayout, detailStatisticsFragment);
+                    transaction.addToBackStack(null);
+                    transaction.commit();
+                }
+            });
+        } else {
+            Log.e("SoccerFragment", "Failed to load matches from JSON");
+        }
 
         return view;
+    }
+
+    private ArrayList<Match> loadMatchesFromAssets() {
+        ArrayList<Match> matchList = new ArrayList<>();
+        try {
+            InputStream is = getActivity().getAssets().open("matches.json");
+            Gson gson = new Gson();
+            InputStreamReader reader = new InputStreamReader(is);
+
+            // Parsing the JSON file
+            JsonObject jsonObject = gson.fromJson(reader, JsonObject.class);
+            JsonArray matchesArray = jsonObject.getAsJsonArray("matches");
+
+            // Type for deserialization
+            Type matchListType = new TypeToken<List<Match>>() {}.getType();
+            matchList = gson.fromJson(matchesArray, matchListType);
+
+            is.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+            Log.e("SoccerFragment", "Error reading matches.json", e);
+        }
+        return matchList;
+    }
+
+    // Helper method to get resource ID from resource name or URL
+    private int getLogoResourceId(String resourceNameOrUrl) {
+        // Logic to convert resourceNameOrUrl to resource ID
+        // This can be implemented based on your project's resource naming or URL handling logic
+        // For simplicity, assuming it's directly a resource name
+        return getResources().getIdentifier(resourceNameOrUrl, "drawable", getActivity().getPackageName());
     }
 }
