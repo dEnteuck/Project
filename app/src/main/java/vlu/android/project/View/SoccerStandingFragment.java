@@ -1,5 +1,6 @@
 package vlu.android.project.View;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.os.Bundle;
@@ -15,7 +16,6 @@ import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
 
-import com.bumptech.glide.Glide;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
@@ -23,6 +23,7 @@ import com.google.gson.reflect.TypeToken;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.Serializable;
 import java.lang.reflect.Type;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -87,19 +88,17 @@ public class SoccerStandingFragment extends Fragment {
 
     private List<Team> filterTeamsByLeague(List<Team> teams, String league) {
         // Filter teams by league
-        List<Team> filteredTeams = teams.stream().filter(team -> league.equalsIgnoreCase(team.getLeague())).collect(Collectors.toList());
-        Log.d(TAG, "Filtered teams for " + league + ": " + new Gson().toJson(filteredTeams));
-        return filteredTeams;
+        return teams.stream()
+                .filter(team -> league.equalsIgnoreCase(team.getLeague()))
+                .collect(Collectors.toList());
     }
 
     private List<Team> getTopTeams(List<Team> teams, int limit) {
         // Get top teams by points, limited to 'limit' number of teams
-        List<Team> topTeams = teams.stream()
+        return teams.stream()
                 .sorted((team1, team2) -> Integer.compare(team2.getPoints(), team1.getPoints()))
                 .limit(limit)
                 .collect(Collectors.toList());
-        Log.d(TAG, "Top teams: " + new Gson().toJson(topTeams));
-        return topTeams;
     }
 
     private void createLeagueTable(LinearLayout containerLayout, String leagueName, List<Team> leagueTeams, int leagueLogoResId) {
@@ -113,11 +112,18 @@ public class SoccerStandingFragment extends Fragment {
         tableLayout.setBackgroundColor(Color.BLACK);
         tableLayout.setStretchAllColumns(true);
 
-        // Add league header with logo
+        // Add league header with logo and name
         LinearLayout leagueHeaderLayout = new LinearLayout(getContext());
         leagueHeaderLayout.setOrientation(LinearLayout.HORIZONTAL);
         leagueHeaderLayout.setPadding(16, 16, 16, 16);
         leagueHeaderLayout.setBackgroundColor(Color.DKGRAY);
+        leagueHeaderLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Navigate to LeagueDetailActivity with all teams for this league
+                navigateToLeagueDetailActivity(filterTeamsByLeague(readJsonFile(), leagueName), leagueName, leagueLogoResId);
+            }
+        });
 
         ImageView leagueLogo = new ImageView(getContext());
         leagueLogo.setImageResource(leagueLogoResId);
@@ -146,10 +152,9 @@ public class SoccerStandingFragment extends Fragment {
         addHeaderCell(headers, "Pts");
         tableLayout.addView(headers);
 
-        // Populate table rows
+        // Populate table rows with top teams
         for (Team team : leagueTeams) {
             TableRow row = new TableRow(getContext());
-
             ImageView teamLogo = new ImageView(getContext());
             int imgResId = getResources().getIdentifier(team.getImg(), "drawable", getContext().getPackageName());
             teamLogo.setImageResource(imgResId);
@@ -187,5 +192,14 @@ public class SoccerStandingFragment extends Fragment {
         textView.setTextColor(Color.WHITE);
         textView.setPadding(16, 16, 16, 16);
         row.addView(textView);
+    }
+
+    private void navigateToLeagueDetailActivity(List<Team> leagueTeams, String leagueName, int leagueLogoResId) {
+        // Navigate to LeagueDetailActivity with league teams
+        Intent intent = new Intent(getActivity(), LeagueDetailActivity.class);
+        intent.putExtra("leagueTeams", (Serializable) leagueTeams);
+        intent.putExtra("leagueName", leagueName);
+        intent.putExtra("leagueLogoResId", leagueLogoResId);
+        startActivity(intent);
     }
 }

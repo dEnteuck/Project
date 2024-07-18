@@ -1,6 +1,9 @@
 package vlu.android.project.Model;
 
-public class Team {
+import java.io.Serializable;
+import java.util.List;
+
+public class Team implements Serializable {
     private String league;
     private String img;
     private String name;
