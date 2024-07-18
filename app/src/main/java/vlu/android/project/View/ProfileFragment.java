@@ -1,5 +1,7 @@
 package vlu.android.project.View;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -94,7 +96,7 @@ public class ProfileFragment extends Fragment {
         btnLogOut.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                logOut();
+                showLogOutConfirmationDialog();
             }
         });
 
@@ -111,5 +113,19 @@ public class ProfileFragment extends Fragment {
         ft.replace(R.id.frmLayoutProfile, fragment);
         ft.addToBackStack("null");
         ft.commit();
+    }
+    void showLogOutConfirmationDialog() {
+        new AlertDialog.Builder(getContext())
+                .setTitle("Log Out")
+                .setMessage("Are you sure you want to log out?")
+                .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        // Redirect to main layout (replace this with your main layout activity)
+                        logOut();
+                    }
+                })
+                .setNegativeButton(android.R.string.no, null)
+                .setIcon(android.R.drawable.ic_dialog_alert)
+                .show();
     }
 }
